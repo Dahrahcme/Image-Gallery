@@ -1,86 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { ClipLoader } from "react-spinners";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import data from "../data.js";
-import { onDragEnd } from "../utils/dragAndDropUtils.js";
-import { auth } from "./userAuth.js";
-import { loginUser, validateUser, signoutUser } from "../Auth/userAuth.js"; // Import your authentication functions
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
-  const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
-  const [items, setItems] = useState(data.cardData);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Get the navigate function
 
-  // ... (other code)
-
-  // Function to handle user login
-  const handleLogin = async () => {
-    const email = "user@example.com";
-    const password = "MyPass01";
-
-    const success = await loginUser(email, password);
-
-    if (success) {
-      setUser({ email }); // Set user state upon successful login
-      toast.success("Logged in successfully");
+  const handleLogin = () => {
+    // Check if the user entered the correct email and password
+    if (email === "user@example.com" && password === "MyPass01") {
+      toast.success("login successful");
+      // Redirect to the User component
+      navigate("/user");
     } else {
-      toast.error("Login failed");
+      navigate("/");
+      // Show a toast message for login failure
+      toast.error(".");
     }
   };
-
-  // Function to handle user logout
-  const handleLogout = async () => {
-    const success = await signoutUser();
-
-    if (success) {
-      setUser(null);
-      toast.success("Logged out successfully");
-    } else {
-      toast.error("Error logging out");
-    }
-  };
-
-  // ... (other code)
 
   return (
-    <section className="py-2 container">
-      <div className="row">
-        {/* ... */}
-        <div className="col-md-6 text-md-end text-center">
-          {user ? (
-            <button className="header-button" onClick={handleLogout}>
-              Logout
-            </button>
-          ) : (
-            <button className="header-button" onClick={handleLogin}>
-              Log In
-            </button>
-          )}
-        </div>
+    <div className="login-page d-flex justify-content-center align-items-center">
+      <div className="container">
+        <h1 className="text-center">Tife's Bakery</h1>
+        <form className="form text-center">
+          <label htmlFor="user-email">Email</label> <br />
+          <input
+            type="email"
+            placeholder="Enter your email here"
+            id="user-email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <br />
+          <label htmlFor="user-password">Password</label> <br />
+          <input
+            type="password"
+            placeholder="Enter your password here"
+            id="user-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <br />
+          <button className="btn btn-primary login" onClick={handleLogin}>
+            Log Out
+          </button>
+          <Link to="/guest">
+            <button className="btn btn-secondary guest">View Gallery</button>
+          </Link>
+        </form>
       </div>
-      <div className="row">{/* ... */}</div>
-      {loading ? (
-        <div className="text-center">
-          <ClipLoader color="#007BFF" size={100} loading={loading} />
-        </div>
-      ) : (
-        <>
-          {user && user.email === "user@example.com" ? (
-            <DragDropContext onDragEnd={onDragEnd}>
-              {/* ... (drag-and-drop code) */}
-            </DragDropContext>
-          ) : (
-            <div className="row justify-content-center content">
-              {/* ... (display images for users who are not logged in) */}
-            </div>
-          )}
-        </>
-      )}
       <ToastContainer />
-    </section>
+    </div>
   );
 };
 

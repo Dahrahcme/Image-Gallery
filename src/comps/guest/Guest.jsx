@@ -3,24 +3,24 @@ import { ClipLoader } from "react-spinners";
 import data from "../data.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { onDragEnd } from "../utils/dragAndDropUtils.js";
+// import { onDragEnd } from "../utils/dragAndDropUtils.js";
 import { Link } from "react-router-dom";
 
 const Guest = () => {
   const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
 
   const searchText = (event) => {
     setFilter(event.target.value);
   };
 
-  // Use an effect to set loading state while filtering
   useEffect(() => {
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // Simulate loading for 1 second (replace with your actual data loading)
+    }, 1000);
+
   }, [filter]);
 
   let dataSearch = data.cardData.filter((item) => {
@@ -32,6 +32,11 @@ const Guest = () => {
     );
   });
 
+  // Function to show the toast when attempting to drag and drop
+  const handleDragStart = () => {
+    toast.warning("Login to enable drag and drop");
+  };
+
   return (
     <section className="py-2 container">
       <div className="row">
@@ -40,7 +45,7 @@ const Guest = () => {
         </div>
         <div className="col-md-6 text-md-end text-center">
           <Link to="/">
-            <input type="button" value="login" className="header-button" />
+            <input type="button" value="Log In" className="header-button" />
           </Link>
         </div>
       </div>
@@ -57,7 +62,7 @@ const Guest = () => {
           </div>
         </div>
       </div>
-      {loading ? ( // Display loader while loading is true
+      {loading ? (
         <div className="text-center">
           <ClipLoader color="#007BFF" size={100} loading={loading} />
         </div>
@@ -68,6 +73,8 @@ const Guest = () => {
               <div
                 className="col-11 col-md-6 col-lg-3 mx-0 mb-4 wrapper"
                 key={index}
+                onDragStart={handleDragStart}
+                draggable={false} // Disable drag-and-drop
               >
                 <div className="card p-0 overflow-hidden h-100 shadow">
                   <img src={item.img} alt="" className="card-img" />
@@ -78,6 +85,7 @@ const Guest = () => {
           })}
         </div>
       )}
+      <ToastContainer />
     </section>
   );
 };
