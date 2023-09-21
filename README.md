@@ -1,3 +1,53 @@
+# Image-Gallery
+
+
+** An Image Gallery with Sorting and Drag and Drop Functinality that allows Rearrangement**
+
+```markdown
+#  Image Gallery with Sorting
+
+An image gallery project with drag and drop functionality for rearrangement of images for logged in users and image sorting.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js installed
+- npm package manager installed
+
+## Installation
+
+1. Clone the repository to your local machine.
+
+type git clone https://github.com/your-username/your-image-gallery.git in your terminal
+
+2.  Navigate to the project directory.
+
+type cd your-image-gallery in your terminal
+
+3.  Install project dependencies.
+
+type install in your terminal
+
+##  Usage
+1.  Start the development server.
+
+type npm start in your terminal
+
+2.  Open your web browser and visit http://localhost:3000 to access the drag and drop image gallery.
+
+3.  You can click and drag images to rearrange their order in the gallery.
+
+Contributing
+If you'd like to contribute to this project, please follow these steps:
+
+Fork the repository.
+Create a new branch for your feature or bug fix.
+Make your changes and commit them.
+Push your changes to your fork.
+Create a pull request.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
