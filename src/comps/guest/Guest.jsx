@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ClipLoader } from "react-spinners";
 import data from "../data.js";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { onDragEnd } from "../utils/dragAndDropUtils.js";
-
-
+import { Link } from "react-router-dom";
 
 const Guest = () => {
   const [filter, setFilter] = useState("");
@@ -38,7 +39,9 @@ const Guest = () => {
           <h2>Welcome to Tife's Bakery</h2>
         </div>
         <div className="col-md-6 text-md-end text-center">
-          <input type="button" value="logout" className="header-button" />
+          <Link to="/">
+            <input type="button" value="login" className="header-button" />
+          </Link>
         </div>
       </div>
       <div className="row">
