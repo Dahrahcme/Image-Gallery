@@ -31,7 +31,7 @@ const Users = () => {
       newDataArray.splice(dragItem.current, 1);
       newDataArray.splice(newPosition, 0, draggedItem);
       dragItem.current = newPosition;
-      // Update the state immediately when dragging
+      // Updates the state immediately when dragging
       setDataArray(newDataArray);
     }
   };
@@ -76,16 +76,12 @@ const Users = () => {
     const [reorderedItem] = items.splice(sourceIndex, 1);
     items.splice(destinationIndex, 0, reorderedItem);
 
-    // Update the state with the new order of cards
+    // Updates the state with the new order of cards
     setDataArray(items);
-
-    // You can call a function here and pass the new order of cards as an argument
-    // For example: updateCardOrder(items);
   };
 
   return (
     <div>
-      {/* Wrap all JSX elements in a parent div */}
       <section className="py-2 container">
         <div className="content">
           <div className="row">
@@ -166,10 +162,7 @@ const Users = () => {
                   )}
                 </Droppable>
               </DragDropContext>
-              {/* Add a placeholder element */}
-              <div style={{ height: "100px", width: "100%" }}>
-                {/* Adjust the height as needed */}
-              </div>
+              <div style={{ height: "100px", width: "100%" }}></div>
             </div>
           )}
         </div>

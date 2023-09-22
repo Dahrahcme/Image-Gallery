@@ -3,7 +3,6 @@ import { ClipLoader } from "react-spinners";
 import data from "../data.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { onDragEnd } from "../utils/dragAndDropUtils.js";
 import { Link } from "react-router-dom";
 
 const Guest = () => {
@@ -74,7 +73,7 @@ const Guest = () => {
                 className="col-11 col-md-6 col-lg-3 mx-0 mb-4 wrapper"
                 key={index}
                 onDragStart={handleDragStart}
-                draggable={false} // Disable drag-and-drop
+                draggable={false} // Disables drag-and-drop
               >
                 <div className="card p-0 overflow-hidden h-100 shadow">
                   <img src={item.img} alt="" className="card-img" />

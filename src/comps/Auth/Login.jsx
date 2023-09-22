@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Login() {
   };
 
   return (
-    <div className="login-page d-flex justify-content-center align-items-center">
+    <div className="login-page">
       <div className="container">
         <h1 className="text-center">Tife's Bakery</h1>
         <form className="form text-center">
@@ -49,24 +50,14 @@ function Login() {
             </div>
           </div>
 
-          <div className="form-group">
-            <div className="row">
-              <div className="col">
-                <button
-                  className="btn btn-primary btn-block custom-btn"
-                  onClick={handleLogin}
-                >
-                  Login
-                </button>
-              </div>
-              <div className="col">
-                <Link to="/guest">
-                  <button className="btn btn-secondary btn-block custom-btn">
-                    View Gallery
-                  </button>
-                </Link>
-              </div>
-            </div>
+          <div className="button">
+            <button className="btn" onClick={handleLogin}>
+              Login
+            </button>
+
+            <Link to="/guest">
+              <button className="btn">View Gallery</button>
+            </Link>
           </div>
         </form>
       </div>

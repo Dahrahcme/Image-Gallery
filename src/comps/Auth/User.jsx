@@ -7,17 +7,17 @@ import { useNavigate } from "react-router-dom";
 const User = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Get the navigate function
-
+  const navigate = useNavigate();
+  // a function to handle login
   const handleLogin = () => {
-    // Check if the user entered the correct email and password
+    // Checks if the user entered the correct email and password
     if (email === "user@example.com" && password === "MyPass01") {
       toast.success("login successful");
-      // Redirect to the User component
+      // Redirects to the User component
       navigate("/user");
     } else {
       navigate("/");
-      // Show a toast message for login failure
+
       toast.error(".");
     }
   };

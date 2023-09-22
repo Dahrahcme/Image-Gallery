@@ -5,12 +5,9 @@ import Login from "../src/comps/Auth/Login";
 import Guest from "../src/comps/guest/Guest";
 import Error from "../src/comps/guest/Error";
 import { AuthDetails } from "./comps/Auth/AuthDetails";
-// import { Navigate } from "react-router-dom";
 import Users from "./comps/loggedInUser/Users";
 
 function App() {
-  const isAuthenticated = true; // Replace with your authentication logic
-
   return (
     <Router>
       <Routes>
