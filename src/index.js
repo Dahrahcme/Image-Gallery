@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-// import './index.css';
-import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom";
+import { DragDropContext } from "react-beautiful-dnd";
+import App from "./App"; // Replace with the path to your main component
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
+    <DragDropContext>
       <App />
-  </React.StrictMode>
+    </DragDropContext>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-

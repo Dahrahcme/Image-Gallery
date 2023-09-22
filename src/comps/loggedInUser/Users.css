@@ -1,0 +1,4 @@
+.dragging-card {
+    transition: transform 0.3s ease; /* Transition for smooth movement */
+    transform: translate(0, 0) scale(1.1); /* Move and scale the card */
+  }
